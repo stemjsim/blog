@@ -8,12 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    // everything fillable except
-    // protected $guarded = ['id'];
-    protected $guarded = [];
-    //define what is fillable anything left out is not fillable
-    // protected $fillable = ['title','excerpt', 'body'];
 
+    protected $guarded = [];
 
     protected $with = ['category', 'author']; //eager loading for evey post query - reduces sql queries 
 
