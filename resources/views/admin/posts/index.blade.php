@@ -29,7 +29,8 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button class="text-xs text-gray-400">Delete</button>
+                                                <button
+                                                    class="text-xs font-bold text-red-300 hover:text-red-700">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
