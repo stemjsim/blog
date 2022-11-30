@@ -31,11 +31,13 @@ Route::post('newsletter', NewsletterController::class);
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
-
+// Login for existing users
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 
+// Logout for Logged in users
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
 
 // Admin functionality
 Route::middleware('can:admin')->group(function () {
