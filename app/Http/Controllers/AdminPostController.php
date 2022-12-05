@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPostController extends Controller
 {
@@ -22,8 +23,6 @@ class AdminPostController extends Controller
 
     public function store()
     {
-        // ddd(request()->file('thumbnail'));
-
         $attributes = request()->validate([
             'title' => 'required',
             'thumbnail' => 'required|image',
@@ -58,6 +57,7 @@ class AdminPostController extends Controller
 
         if(isset($attributes['thumbnail']))
         {
+            Storage::delete($post->thumbnail);
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
         }
 
@@ -68,6 +68,7 @@ class AdminPostController extends Controller
 
     public function destroy(Post $post)
     {
+        Storage::delete($post->thumbnail);
         $post->delete();
 
         return back()->with('success', 'Post has been Deleted');
