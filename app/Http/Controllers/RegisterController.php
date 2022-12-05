@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -16,11 +17,13 @@ class RegisterController extends Controller
     public function store() 
     {
         $attributes = request()->validate([
-            'name' => ['required', 'min:5'],
+            'name' => ['required', 'min:2'],
             'username' => ['required', 'min:5', 'unique:users,username'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:7', 'max:255']
+            'password' => ['required','confirmed' , Password::min(7)->mixedCase()->numbers()]
         ]);
+        // Password rules can add symbols() after numbers to require a symbol as well
+        // Can add uncompromised() to check haveibeenpwned.com can add number to set min amount of times compromised before rejection
 
         $user = User::create($attributes);
 
