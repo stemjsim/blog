@@ -4,14 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
     use HasFactory;
+    use sluggable;
 
     protected $guarded = [];
 
     protected $with = ['category', 'author']; //eager loading for evey post query - reduces sql queries 
+
+    // Add automatic slug generation to forms
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function scopeFilter($query, array $filters)
     {
