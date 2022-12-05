@@ -15,7 +15,7 @@ class Post extends Model
 
     protected $with = ['category', 'author']; //eager loading for evey post query - reduces sql queries 
 
-    // Add automatic slug generation to forms
+    // Add automatic slug generation to forms using Eloquent Sluggable Extension
     public function sluggable(): array
     {
         return [
@@ -53,13 +53,14 @@ class Post extends Model
 
     public function category()
     {
-        //hasOne, hasMany, belongsTo, belongsToMany
+        //post can only have one category.
+        //*** To Do - add multiple categories ***
         return $this->belongsTo(Category::class);
     }
 
     public function author()
     {
-        //hasOne, hasMany, belongsTo, belongsToMany
+        //post can have only one author
         return $this->belongsTo(User::class, 'user_id');
     }
 }

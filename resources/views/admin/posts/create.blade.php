@@ -6,8 +6,6 @@
 
             <x-form.input name="title" />
 
-            <x-form.input name="slug" />
-
             <x-form.input name="thumbnail" type="file" />
 
             <x-form.textarea name="excerpt" />
