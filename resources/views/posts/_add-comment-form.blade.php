@@ -10,16 +10,18 @@
 
 
             <div class="mt-6">
-                <textarea name="body" class="w-full text-small focus:outline-none focus:ring" rows="5"
+                <textarea name="body" class="w-full text-small focus:outline-none focus:ring" rows="2"
                     placeholder="Add a comment" required></textarea>
 
                 <x-form.error name="body" />
+
+                <div class="flex justify-end mt-1">
+                    <x-form.button>Share</x-form.button>
+                </div>
             </div>
 
 
-            <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
-                <x-form.button>Share</x-form.button>
-            </div>
+
         </form>
     </x-panel>
 @else

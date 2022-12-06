@@ -1,6 +1,6 @@
 <header class="max-w-xl mx-auto mt-20 text-center">
     <h1 class="text-4xl">
-        Thoughts <span class="text-blue-500">From My Mind</span> To Yours
+        Thoughts <span class="text-green-700 font-semibold">From My Mind</span> To Yours
     </h1>
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-4">
