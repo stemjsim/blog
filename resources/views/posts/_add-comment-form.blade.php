@@ -26,8 +26,9 @@
     </x-panel>
 @else
     <p class="font-semibold">
-        <a href="/register" class="hover:underline">Register</a>
-        <a href="/login" class="hover:underline">Log in</a>
+        <a href="/register" class="text-semibold text-green-500 hover:underline">Register</a>
+        Or
+        <a href="/login" class="text-semibold text-green-500 hover:underline">Log in</a>
         to leave a comment.
     </p>
 @endauth
