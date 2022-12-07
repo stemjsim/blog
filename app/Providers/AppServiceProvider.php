@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
 
+        // Define admin role for higher permissions
         Gate::define('admin', function (User $user){
             return $user->username == 'steve';
         });
@@ -36,6 +37,15 @@ class AppServiceProvider extends ServiceProvider
         //Blade directive to check the Gate directive above for admin user
         Blade::if('admin', function (){
             return request()->user()->can('admin');
+        });
+
+        // Define User role for posting
+        Gate::define('user', function (User $user){
+            return $user->username == 'andrew';
+        });
+
+        Blade::if('user', function (){
+            return request()->user()->can('user');
         });
     }
 }

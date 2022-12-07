@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
@@ -40,6 +42,22 @@ Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 // Logout for Logged in users
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+// User functionality
+Route::middleware('can:user')->group(function () {
+    Route::get('user/dashboard', [UserController::class, 'index']);
+    Route::post('user/dashboard', [UserPostController::class, 'store']);
+    Route::get('user/edit', [UserController::class, 'edit']);
+
+    //User Post CRUD
+    Route::get('user/posts/create', [UserPostController::class, 'create']);
+    Route::get('user/{post}/edit', [UserPostController::class, 'edit']);
+    Route::patch('user/{post}', [UserPostController::class, 'update']);
+    Route::delete('user/{post}', [UserPostController::class, 'destroy']);
+    
+    //User Update
+    Route::get('user/edit', [UserController::class, 'edit']);
+
+});
 
 // Admin functionality
 Route::middleware('can:admin')->group(function () {

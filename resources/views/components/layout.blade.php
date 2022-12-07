@@ -29,6 +29,11 @@
                         <x-slot name="trigger">
                             <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</button>
                         </x-slot>
+                        @user
+                            <x-dropdown-item href="/user/dashboard" :active="request()->is('user/dashboard')">
+                                Dashboard
+                            </x-dropdown-item>
+                        @enduser
 
                         @admin
                             <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">Dashboard</x-dropdown-item>
