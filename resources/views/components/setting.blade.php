@@ -38,9 +38,9 @@
                             class="{{ request()->is('user/posts/create') ? 'text-green-700 font-bold' : '' }}">New Post</a>
                     </li>
 
-                    <li><a href="/user/edit" class="{{ request()->is('user/edit') ? 'text-green-700 font-bold' : '' }}">My
+                    {{-- <li><a href="/user/edit" class="{{ request()->is('user/edit') ? 'text-green-700 font-bold' : '' }}">My
                             Profile</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </aside>
         @enduser
