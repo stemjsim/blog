@@ -1,10 +1,10 @@
 @props(['heading'])
 
-<section class="py-8 max-w-4xl mx-auto">
+<section class="py-8 max-w-6xl mx-auto">
     <h1 class="text-xl font-semibold mb-8 border-b">{{ $heading }}</h1>
 
     <div class="flex">
-        <aside class="w-48 flex-shrink-0">
+        <aside class="w-28 flex-shrink-0">
             <h4 class="font-semibold mb-5">Links</h4>
             <ul>
                 <li><a href="/admin/posts"

@@ -41,7 +41,6 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 
 // Admin functionality
 Route::middleware('can:admin')->group(function () {
-    // Route::resource('admin/posts', AdminPostController::class); // Saves writing below routes takes from AdminPostController methods to set up
     Route::get('admin/posts', [AdminPostController::class, 'index']);
     Route::post('admin/posts', [AdminPostController::class, 'store']);
     Route::get('admin/posts/create', [AdminPostController::class, 'create']);
@@ -49,6 +48,8 @@ Route::middleware('can:admin')->group(function () {
     
     Route::patch('admin/posts/{post}', [AdminPostController::class, 'update']);
     Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy']);
+
+    Route::get('admin/users', [AdminUserController::class, 'create']);
 });
 
 ////////UPLOADS//////////
