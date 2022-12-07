@@ -14,7 +14,7 @@
                         class="{{ request()->is('admin/posts/create') ? 'text-green-700 font-bold' : '' }}">New Post</a>
                 </li>
 
-                <li><a href="/admin/posts"
+                <li><a href="/admin/users"
                         class="{{ request()->is('admin/users') ? 'text-green-700 font-bold' : '' }}">All Users</a>
                 </li>
 
@@ -26,7 +26,7 @@
 
 
 
-
+        {{-- Area for tables next to the menu  --}}
         <main class="flex-1">
             <x-panel class="max-w-xl mx-auto">
                 {{ $slot }}

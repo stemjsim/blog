@@ -38,33 +38,33 @@ class AdminUserController extends Controller
             'users' => User::paginate(10)])->with('success', 'A new User has been created!');
     }
 
-    // public function edit(User $user)
-    // {
-    //     return view('admin.users.edit', ['user' => $user]);
-    // }
+    public function edit(User $user)
+    {
+        return view('admin.users.edit', ['user' => $user]);
+    }
 
-    // public function update(Post $post)
-    // {
-    //     $attributes = request()->validate([
-    //        
-    //     ]);
+    public function update(User $user)
+    {
+        $attributes = request()->validate([
+            'name' => 'min:2',
+            'username' => ['min:5', Rule::unique('users', 'username')->ignore($user->id)],
+            'email' => [ 'email', Rule::unique('users','email')->ignore($user->id)]
+        ]);
 
-    //     if(isset($attributes['thumbnail']))
-    //     {
-    //         Storage::delete($post->thumbnail);
-    //         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-    //     }
+        if(isset($attributes['password']))
+        {
+            $attributes['password'] = ['confirmed' , Password::min(7)->mixedCase()->numbers()];
+        }
 
-    //     $post->update($attributes);
+        $user->update($attributes);
 
-    //     return back()->with('success', 'Post has been updated');
-    // }
+        return back()->with('success', 'User has been updated');
+    }
 
-    // public function destroy(Post $post)
-    // {
-    //     Storage::delete($post->thumbnail);
-    //     $post->delete();
+    public function destroy(User $user)
+    {
+        $user->delete();
 
-    //     return back()->with('success', 'Post has been Deleted');
-    // }
+        return back()->with('success', 'User has been Deleted');
+    }
 }

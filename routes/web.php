@@ -54,6 +54,10 @@ Route::middleware('can:admin')->group(function () {
     Route::get('admin/users', [AdminUserController::class, 'index']);
     Route::post('admin/users', [AdminUserController::class, 'store']);
     Route::get('admin/users/create', [AdminUserController::class, 'create']);
+    Route::get('admin/users/{user}/edit', [AdminUserController::class, 'edit']);
+
+    Route::patch('admin/users/{user}', [AdminUserController::class, 'update']);
+    Route::delete('admin/users/{user}', [AdminUserController::class, 'destroy']);
 });
 
 ////////UPLOADS//////////
