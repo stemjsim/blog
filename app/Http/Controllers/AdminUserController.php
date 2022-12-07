@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Password;
 
 class AdminUserController extends Controller
 {
     public function index()
     {
         return view('admin.users.index',[
-            'posts' => Post::paginate(50)
+            'users' => User::paginate(10)
         ]);
     }
 
@@ -21,38 +22,31 @@ class AdminUserController extends Controller
         return view('admin.users.create');
     }
 
-    // public function store()
+    public function store()
+    {
+
+        $attributes = request()->validate([
+            'name' => ['required', 'min:2'],
+            'username' => ['required', 'min:5', 'unique:users,username'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required','confirmed' , Password::min(7)->mixedCase()->numbers()]
+        ]);      
+
+       User::create($attributes);
+
+        return view('admin.users.index',[
+            'users' => User::paginate(10)])->with('success', 'A new User has been created!');
+    }
+
+    // public function edit(User $user)
     // {
-    //     $attributes = request()->validate([
-    //         'title' => 'required',
-    //         'thumbnail' => 'required|image',
-    //         'excerpt' => 'required',
-    //         'body' => 'required',
-    //         'category_id' => ['required', Rule::exists('categories', 'id')]
-    //     ]);
-
-    //     $attributes['user_id'] = auth()->id();
-    //     $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-
-    //     Post::create($attributes);
-
-    //     return redirect('/');
-    // }
-
-    // public function edit(Post $post)
-    // {
-    //     return view('admin.posts.edit', ['post' => $post]);
+    //     return view('admin.users.edit', ['user' => $user]);
     // }
 
     // public function update(Post $post)
     // {
     //     $attributes = request()->validate([
-    //         'title' => 'required',
-    //         'thumbnail' => 'image',
-    //         'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
-    //         'excerpt' => 'required',
-    //         'body' => 'required',
-    //         'category_id' => ['required', Rule::exists('categories', 'id')]
+    //        
     //     ]);
 
     //     if(isset($attributes['thumbnail']))

@@ -12,7 +12,7 @@ class AdminPostController extends Controller
     public function index()
     {
         return view('admin.posts.index',[
-            'posts' => Post::paginate(50)
+            'posts' => Post::paginate(10)
         ]);
     }
 
@@ -36,7 +36,9 @@ class AdminPostController extends Controller
 
         Post::create($attributes);
 
-        return redirect('/');
+        return view('admin.posts.index',[
+            'posts' => Post::paginate(10)
+        ])->with('success', 'A new Post has been Created');
     }
 
     public function edit(Post $post)

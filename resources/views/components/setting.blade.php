@@ -14,8 +14,12 @@
                         class="{{ request()->is('admin/posts/create') ? 'text-green-700 font-bold' : '' }}">New Post</a>
                 </li>
 
-                <li><a href="/admin/users"
-                        class="{{ request()->is('admin/users') ? 'text-green-700 font-bold' : '' }}">Users</a>
+                <li><a href="/admin/posts"
+                        class="{{ request()->is('admin/users') ? 'text-green-700 font-bold' : '' }}">All Users</a>
+                </li>
+
+                <li><a href="/admin/users/create"
+                        class="{{ request()->is('admin/users/create') ? 'text-green-700 font-bold' : '' }}">New User</a>
                 </li>
             </ul>
         </aside>
@@ -24,7 +28,7 @@
 
 
         <main class="flex-1">
-            <x-panel class="max-w-md mx-auto">
+            <x-panel class="max-w-xl mx-auto">
                 {{ $slot }}
             </x-panel>
         </main>

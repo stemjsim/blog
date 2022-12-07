@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
@@ -49,7 +50,10 @@ Route::middleware('can:admin')->group(function () {
     Route::patch('admin/posts/{post}', [AdminPostController::class, 'update']);
     Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy']);
 
-    Route::get('admin/users', [AdminUserController::class, 'create']);
+
+    Route::get('admin/users', [AdminUserController::class, 'index']);
+    Route::post('admin/users', [AdminUserController::class, 'store']);
+    Route::get('admin/users/create', [AdminUserController::class, 'create']);
 });
 
 ////////UPLOADS//////////

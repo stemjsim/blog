@@ -9,24 +9,29 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
                                     <th>
-                                        <div class="flex text-align-left px-6 py-4">Post Title</div>
+                                        <div class="flex text-align-left px-6 py-4">Name</div>
                                     </th>
                                     <th>
                                         <div class="items-center">
                                             <div class="flex text-align-left px-6">
-                                                Author
+                                                Username
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="items-center">
+                                            <div class="flex text-align-left px-6">
+                                                Email
                                             </div>
                                         </div>
                                     </th>
                                 </tr>
-                                @foreach ($posts as $post)
+                                @foreach ($users as $user)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    <a href="/posts/{{ $post->slug }}">
-                                                        {{ $post->title }}
-                                                    </a>
+                                                    {{ $user->name }}
                                                 </div>
                                             </div>
                                         </td>
@@ -34,18 +39,26 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    {{ $post->author->username }}
+                                                    {{ $user->username }}
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $user->email }}
                                                 </div>
                                             </div>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/admin/posts/{{ $post->id }}/edit"
+                                            <a href="/admin/posts/{{ $user->id }}/edit"
                                                 class="text-blue-500 hover:text-blue-600">Edit</a>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form method="POST" action="/admin/posts/{{ $post->id }}">
+                                            <form method="POST" action="/admin/users/{{ $user->id }}">
                                                 @csrf
                                                 @method('DELETE')
 
