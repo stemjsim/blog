@@ -26,6 +26,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
+// Newsletter registration
 Route::post('newsletter', NewsletterController::class);
 
 // Registration when not signed in
