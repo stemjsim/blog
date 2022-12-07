@@ -9,6 +9,9 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
                                     <th>
+                                        <div class="flex text-align-left px-6 py-4">Admin Level</div>
+                                    </th>
+                                    <th>
                                         <div class="flex text-align-left px-6 py-4">Name</div>
                                     </th>
                                     <th>
@@ -28,6 +31,16 @@
                                 </tr>
                                 @foreach ($users as $user)
                                     <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div
+                                                    class="text-sm font-medium text-gray-900
+                                                {{ $user->admin_level === 'admin' ? 'text-green-700 font-bold' : '' }}">
+                                                    {{ $user->admin_level }}
+                                                </div>
+                                            </div>
+                                        </td>
+
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">

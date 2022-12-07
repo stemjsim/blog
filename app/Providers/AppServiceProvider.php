@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Define admin role for higher permissions
         Gate::define('admin', function (User $user){
-            return $user->username == 'steve';
+            return $user->admin_level == 'admin';
         });
 
         //Blade directive to check the Gate directive above for admin user
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Define User role for posting
         Gate::define('user', function (User $user){
-            return $user->username == 'andrew';
+            return $user->admin_level == 'user';
         });
 
         Blade::if('user', function (){
