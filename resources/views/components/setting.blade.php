@@ -13,6 +13,10 @@
                 <li><a href="/admin/posts/create"
                         class="{{ request()->is('admin/posts/create') ? 'text-green-700 font-bold' : '' }}">New Post</a>
                 </li>
+
+                <li><a href="/admin/users"
+                        class="{{ request()->is('admin/users') ? 'text-green-700 font-bold' : '' }}">Users</a>
+                </li>
             </ul>
         </aside>
 
