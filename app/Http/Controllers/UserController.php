@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        // ddd(request()->all());
+        // ddd(request()->all());    
         return view('users.edit', ['user' => $user]);
     }
 }

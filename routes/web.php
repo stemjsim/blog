@@ -53,9 +53,10 @@ Route::middleware('can:user')->group(function () {
     Route::get('user/{post}/edit', [UserPostController::class, 'edit']);
     Route::patch('user/{post}', [UserPostController::class, 'update']);
     Route::delete('user/{post}', [UserPostController::class, 'destroy']);
-    
+
     //User Update
-    Route::get('user/edit', [UserController::class, 'edit']);
+    Route::get('user/{user}/edit', [UserController::class, 'edit']);
+    Route::patch('/users/{user}', [UserController::class, 'update']);
 
 });
 
