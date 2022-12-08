@@ -15,7 +15,10 @@
 
                 </form>
                 <x-form.button>
-                    <a href="/login/github">Login Github</a>
+                    <a href="/login/github">Login with Github</a>
+                </x-form.button>
+                <x-form.button>
+                    <a href="/login/google">Login with Google</a>
                 </x-form.button>
             </x-panel>
         </main>

@@ -48,10 +48,41 @@ class LoginController extends Controller
             // Redirect to dashboard
             return redirect('/')->with('success', 'You are now logged in with Github');
         }
+
+        public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
     }
 
+    public function handleGoogleCallback()
+    {
+
+        $googleUser = Socialite::driver('google')->user();
+        
+        
+        $user = User::firstOrCreate(
+            [
+                //Check if user exists, login if exists
+                'provider_id' => $googleUser->getId(),
+            ],
+            [
+                // Add all 3 into table if not exists
+                'email' => $googleUser->getEmail(),
+                'username' => $googleUser->getName(),
+                'name' => $googleUser->getName(),
+                ]
+            );
+            
+            // Log the user in
+            auth()->login($user, true);
+            
+            // Redirect to dashboard
+            return redirect('/')->with('success', 'You are now logged in with Google');
+        }
+
+}
     //     // dd($user);
-    //     Pre research for useOrCreate method code example
+    //     Pre research fpr useOrCreate method code example
     //
     //     $user = User::where('provider_id', $githubUser->getId())->first();
     //     // Create a user from github details
