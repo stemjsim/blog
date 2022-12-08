@@ -85,7 +85,7 @@ Route::middleware('can:admin')->group(function () {
 Route::get('login/github', [LoginController::class, 'redirectToProvider']);
 Route::get('login/github/callback', [LoginController::class, 'handleProviderCallback']);
 
-// Github login Routes
+// Google login Routes
 Route::get('login/google', [LoginController::class, 'redirectToGoogle']);
 Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
