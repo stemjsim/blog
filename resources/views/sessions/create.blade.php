@@ -4,6 +4,11 @@
             <x-panel>
                 <h1 class="text-center font-bold text-xl">Log In</h1>
 
+                <x-btn-field>
+                    <x-btn-github />
+                    <x-btn-google />
+                </x-btn-field>
+
                 <form action="/login" method="POST" class="mt-10">
 
                     @csrf
@@ -14,12 +19,7 @@
                     <x-form.button>Log In</x-form.button>
 
                 </form>
-                <x-form.button>
-                    <a href="/login/github">Login with Github</a>
-                </x-form.button>
-                <x-form.button>
-                    <a href="/login/google">Login with Google</a>
-                </x-form.button>
+
             </x-panel>
         </main>
     </section>
