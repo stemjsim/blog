@@ -25,7 +25,6 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        // $githubUser = Socialite::driver('github')->user();
         $githubUser = Socialite::driver('github')->user();
         
         // User firstOrCreate method to check if a user exists
