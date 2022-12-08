@@ -14,6 +14,9 @@
                     <x-form.button>Log In</x-form.button>
 
                 </form>
+                <x-form.button>
+                    <a href="/login/github">Login Github</a>
+                </x-form.button>
             </x-panel>
         </main>
     </section>

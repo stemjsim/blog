@@ -13,6 +13,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Services\Newsletter;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;  //used to get metadata 
@@ -79,6 +80,12 @@ Route::middleware('can:admin')->group(function () {
     Route::patch('admin/users/{user}', [AdminUserController::class, 'update']);
     Route::delete('admin/users/{user}', [AdminUserController::class, 'destroy']);
 });
+
+// Github login Routes
+Route::get('login/github', [LoginController::class, 'redirectToProvider']);
+Route::get('login/github/callback', [LoginController::class, 'handleProviderCallback']);
+
+
 
 ////////UPLOADS//////////
 
