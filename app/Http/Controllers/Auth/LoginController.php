@@ -37,6 +37,7 @@ class LoginController extends Controller
             [
                 // Add all 3 into table if not exists
                 'email' => $githubUser->getEmail(),
+                'username' => $googleUser->getName(),
                 'name' => $githubUser->getName(),
                 ]
             );
@@ -65,7 +66,7 @@ class LoginController extends Controller
                 'provider_id' => $googleUser->getId(),
             ],
             [
-                // Add all 3 into table if not exists
+                // Add all 4 into table if not exists
                 'email' => $googleUser->getEmail(),
                 'username' => $googleUser->getName(),
                 'name' => $googleUser->getName(),
