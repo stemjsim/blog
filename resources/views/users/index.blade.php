@@ -18,6 +18,12 @@
                                             </div>
                                         </div>
                                     </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+
+                                    </th>
                                 </tr>
                                 @foreach ($posts as $post)
                                     <tr>

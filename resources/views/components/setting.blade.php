@@ -48,7 +48,7 @@
 
         {{-- Area for tables next to the menu  --}}
         <main class="flex-1">
-            <x-panel class="max-w-xl mx-auto">
+            <x-panel class="mx-auto bg-green-100">
                 {{ $slot }}
             </x-panel>
         </main>
