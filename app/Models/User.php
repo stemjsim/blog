@@ -44,6 +44,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
+    public function getUsernameAttribute($username)
+    {
+        return ucwords($username); 
+    }
+
     public function posts() // $user->posts
     {
         return $this->hasMany(Post::class);     
