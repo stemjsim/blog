@@ -28,11 +28,20 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
             'admin_level' => 'admin'
         ]);
+
         $user = User::factory()->create([
-            'username'=> 'andrew',
-            'name' => 'andrew',
-            'email' => 'andrew@andrew.com',
-            'password' => 'password'
+            'username'=> 'Admin',
+            'name' => 'UWS Admin',
+            'email' => 'UWSAdmin@uws.com',
+            'password' => 'SSSlaravel22',
+            'admin_level' => 'admin'
+        ]);
+
+        $user = User::factory()->create([
+            'username'=> 'Andrew',
+            'name' => 'Andrew',
+            'email' => 'testuser@test.com',
+            'password' => 'Laraveltest22'
         ]);
 
         Post::factory(5)->create([
