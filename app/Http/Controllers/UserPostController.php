@@ -67,7 +67,9 @@ class UserPostController extends Controller
 
     public function destroy(Post $post)
     {
-        Storage::delete($post->thumbnail);
+        if(!$post->thumbnail == "thumbnails/default-img.png"){
+            Storage::delete($post->thumbnail);
+        }
         $post->delete();
 
         return back()->with('success', 'Post has been Deleted');
