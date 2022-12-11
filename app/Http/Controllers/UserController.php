@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         return view('users.index',[
-            'posts' => Post::where('user_id', Auth::user()->id)->paginate(10)
+            'posts' => Post::where('user_id', Auth::user()->id)->latest()->paginate(10)
         ]);
     }
 
