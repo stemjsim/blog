@@ -12,6 +12,9 @@
                                         <div class="flex text-align-left px-6 py-4">Post Title</div>
                                     </th>
                                     <th>
+                                        <div class="flex text-align-left px-6 py-4">Created on</div>
+                                    </th>
+                                    <th>
                                         <div class="items-center">
                                             <div class="flex text-align-left px-6">
                                                 Author
@@ -31,6 +34,14 @@
                                                     <a href="/posts/{{ $post->slug }}">
                                                         {{ $post->title }}
                                                     </a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $post->created_at->format('d - m - Y') }}
                                                 </div>
                                             </div>
                                         </td>

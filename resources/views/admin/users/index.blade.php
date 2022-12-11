@@ -24,6 +24,13 @@
                                     <th>
                                         <div class="items-center">
                                             <div class="flex text-align-left px-6">
+                                                Joined
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="items-center">
+                                            <div class="flex text-align-left px-6">
                                                 Email
                                             </div>
                                         </div>
@@ -58,6 +65,14 @@
                                                 <div class="text-sm font-medium text-green-500">
                                                     <a href="/?author={{ $user->username }}">
                                                         {{ $user->username }} </a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $user->created_at->format('d - m - Y') }}
                                                 </div>
                                             </div>
                                         </td>
